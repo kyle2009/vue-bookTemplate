@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<link rel="stylesheet" href="">
+	<script src="script/vue.js"></script>
+
+</head>
+<body>
+	当你不想改变原数组，想通过一个数组的副本来做过滤或排序的显示时，可以使用计算属性来返回过滤或排序后的数组，例如：
+
+	<div id="app">
+		<ul>
+			<template v-for='book in filterBooks'>
+				<li>书名：{{ book.name }}</li>
+				<li>作者：{{ book.author }}</li>
+			</template>
+		</ul>
+	</div>
+
+	<script>
+		var app = new Vue({
+			el:'#app',
+			data:{
+				books:[
+					{name:'《Vue.js实战》', author:'梁灏'},
+					{name:'《JavaScript语言精粹》', author:'Douglas Crockford'},
+					{name:'《JavaScript高级程序设计》', author:'Nicholas C.Zakas'}
+				]
+			},
+			computed:{
+				filterBooks:function () {
+					return this.books.filter(book => {
+						return book.name.match(/JavaScript/)
+					})
+				}
+			}
+		})
+	</script>
+</body>
+</html>

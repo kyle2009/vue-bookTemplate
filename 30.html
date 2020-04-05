@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<link rel="stylesheet" href="">
+	<script src="script/vue.js"></script>
+
+</head>
+<body>
+	<!-- !!!v-show 不能在<template>上使用 -->
+	<div id="app">
+		<p v-show="status === 1">当status为1时显示该行</p>
+	</div>
+
+	<script>
+		var app = new Vue({
+			el:'#app',
+			data:{
+				status:2
+			}
+		})
+	</script>
+</body>
+</html>

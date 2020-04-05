@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<link rel="stylesheet" href="">
+	<script src="script/vue.js"></script>
+
+</head>
+<body>
+	<!-- 非父子组件通信 -->
+	<!-- 在Vue.js 2.x 中，推荐使用一个空的Vue实例作为中央事件总线（bus），也就是一个中介。 -->
+
+	<div id="app">
+		{{ message }}
+		<component-a></component-a>
+	</div>
+
+	<script>
+		var bus = new Vue();
+
+		Vue.component('component-a',{
+			template:'<button @click="handleEvent">传递事件</button>',
+			methods:{
+				handleEvent:function () {
+					bus.$emit('on-message','来自组件component-a的内容')
+				}
+			}
+		})
+
+		var app = new Vue({
+			el:'#app',
+			data:{
+				message:''
+			},
+			mounted:function () {
+				var _this = this;
+
+				// 在实例初始化时，监听来自bus实例的事件
+				bus.$on('on-message',function (msg) {
+					_this.message = msg;
+				})
+			}
+		})
+	</script>
+</body>
+</html>

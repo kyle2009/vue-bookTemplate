@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<link rel="stylesheet" href="">
+	<script src="script/vue.js"></script>
+
+</head>
+<body>
+	<!-- 全局组件注册 -->
+	<div id="app">
+		<my-component></my-component>
+	</div>
+
+	<script type="text/javascript">
+		Vue.component('my-component',{
+			// 选项
+			template:'<div>这里是组件内容</div>'
+		});
+
+		var app = new Vue({
+			el:'#app',
+			
+		})
+	</script>
+
+	<hr>
+
+	<!-- 局部组件注册 -->
+	<div id="app2">
+		<my-component2></my-component2>
+	</div>
+
+	<script>
+		var child = {
+			template:'<div>局部组件注册</div>'
+		}
+
+		var app2 = new Vue({
+			el:'#app2',
+			components:{
+				'my-component2':child
+			}
+		})
+	</script>
+
+	<hr>
+	<!-- table;ul;等特殊属性使用is挂载组件 -->
+	<!-- 常见的限制元素还有<ul>,<ol>,<select> -->
+	<!-- 如果使用的是字符串模板，是不受限制的，比如后面章节介绍的.vue单文件用法等 -->
+	<div id="app3">
+		<table>
+			<tbody is='my-component3'></tbody>
+		</table>
+	</div>
+
+	<script>
+		Vue.component('my-component3',{
+			template:'<div>这里是组件的内容，table直接使用组件是无效的，使用特殊的is属性挂载组件</div>'
+		})
+
+		var app3 = new Vue({
+			el:'#app3'
+		})
+	</script>
+</body>
+</html>

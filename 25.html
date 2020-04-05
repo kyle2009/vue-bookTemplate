@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<link rel="stylesheet" href="">
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+	<style type="text/css" media="screen">
+
+	</style>
+</head>
+<body> 
+	<!-- 参考资料https://www.jianshu.com/p/f56cde007210?utm_source=oschina-app -->
+	<img src="https://upload-images.jianshu.io/upload_images/3386108-cc0cda1d980b9586.gif?imageMogr2/auto-orient/strip|imageView2/2/w/288/format/webp" alt="">
+	<div id="app" v-cloak>
+		{{ message }}
+	</div>
+
+	<script>
+		var app = new Vue({
+			el:'#app',
+			data:{
+				message:'这是一段文本'
+			}
+		})
+	</script>
+
+	<!-- ！！！ -->
+	<!-- v-cloak 解决网络慢的时候没有渲染导致显示{{XXX}}的问题 -->
+	<!-- 配合 css 添加  -->
+	<!-- 属性样式：[v-cloak]{	display:none} -->
+</body>
+</html>

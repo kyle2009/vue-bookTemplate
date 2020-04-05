@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<link rel="stylesheet" href="">
+	<script src="script/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<span> 这本书是: {{ book }}</span>
+		<p></p>
+		<!-- v-pre 跳过子元素的编译过程 -->
+		<span v-pre >{{ 这里的内容不会编译 book }}</span>
+
+	</div>
+
+	<script>
+		var app = new Vue({
+			el:'#app',
+			data:{
+				book:'<<这是一本书>>'
+			}
+		})
+	</script>
+</body>
+</html>

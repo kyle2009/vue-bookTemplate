@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<link rel="stylesheet" href="">
+	<script src="script/vue.js"></script>
+
+</head>
+<body>
+	<!-- 除了数组外，对象的属性也是可以遍历的，例如 -->
+	<div id="app">
+		<span v-for='value in user'>{{ value }}</span>
+	</div>
+
+	<script>
+		var app = new Vue({
+			el:'#app',
+			data:{
+				user:{
+					name:'Aresn',
+					gender:'男',
+					age:26
+				}
+			}
+		})
+	</script>
+
+	<!-- 遍历对手属性是，有两个可选参数，分别是键名和索引 -->
+	<div id="app2">
+		<p v-for='(value,key,index) in user'>
+			{{ index }}-{{ key }}-{{ value }}
+		</p>
+	</div>
+
+	<script>
+		var app2 = new Vue({
+			el:'#app2',
+			data:{
+				user:{
+					name:'Aresn',
+					gender:'男',
+					age:26
+				}
+			}
+		})
+	</script>
+
+	<!-- v-for还可以迭代整数 -->
+	<div id="app3">
+		<p v-for='num in 10'> {{ num }}</p>
+	</div>
+
+	<script>
+		var app3 = new Vue({
+			el:'#app3'
+		})
+	</script>
+</body>
+</html>

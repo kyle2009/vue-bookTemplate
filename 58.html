@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<link rel="stylesheet" href="">
+	<script src="script/vue.js"></script>
+
+</head>
+<body>
+	<div id="app">
+		<my-component :init-count='1'></my-component>
+	</div>
+
+	<script>
+		Vue.component('my-component',{
+			props:['initCount'],
+			template:'<div>{{ count }}</div>',
+			data:function () {
+				return{
+					count:this.initCount
+				}
+			}
+		})
+
+		var app = new Vue({
+			el:'#app'
+		})
+	</script>
+
+	<!-- 组件中声明了数据count，它在组件初始化时获取来自父组件的initCount，之后就与之无关了，之用维护count，这样就可以避免直接操作initCount -->
+
+	<hr>
+
+	<!-- 另一种请就是prop作为需要被转变的原始值传入。这种情况用计算属性就可以了。示例代码如下 -->
+
+	<div id="app2">
+		<my-component2 :width='100'></my-component2>
+	</div>
+
+	<script>
+		Vue.component('my-component2',{
+			props:['width'],
+			template:"<div :style='style'></div>",
+			computed:{
+				style:function () {
+					return {
+						width:this.width + 'px'
+					}
+				}
+			}
+		})
+
+		var app2 = new Vue({
+			el:"#app2"
+		})
+	</script>
+
+	<!-- 因为用CSS传递宽度要带单位（px），但是每次都写太麻烦，而且数值计算一般是不带单位的，所以统一在组件内使用计算属性就可以了。 -->
+
+	<!-- ！！！注意：在JavaScript中对象和数组是引用类型，指向同一个内容空间，所以props是对象和数组时，在子组件内改变是会影响父组件的。 -->
+
+
+</body>
+</html>

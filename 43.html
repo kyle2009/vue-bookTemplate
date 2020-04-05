@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<link rel="stylesheet" href="">
+	<script src="script/vue.js"></script>
+
+</head>
+<body>
+	<!-- 在勾选时，数据checked的值变为了true，label中渲染的内容也会更新。 -->
+	<div id="app">
+		<input type="checkbox" name="" v-model='checked' id='checked'>
+		<label for='checked'>选中状态：{{ checked }}</label>
+	</div>
+
+	<script>
+		var app = new Vue({
+			el:'#app',
+			data:{
+				checked:false
+			}
+		})
+	</script>
+
+	<!-- 组合使用时，也是v-model与value一起，多个勾选框都绑定到同一个数组类型的数据，value的值在数组当中，就会选中这一项。这一过程也是双向的，在勾选时，value的值也会自动push到这个数组中，示例代码如下： -->
+	<hr>
+	<div id="app2">
+		<input type="checkbox" v-model="checked" value='html' id='html'>
+		<label for="html">HTML</label>
+		<br>
+		<input type="checkbox" v-model='checked' value="js" id="js" name="">
+		<label for="js">JavaScript</label>
+		<br>
+		<input type="checkbox" name="" v-model='checked' value="css" id='css'>
+		<label>CSS</label>
+		<br>
+		<p>选择的项是：{{ checked }}</p>
+	</div>
+
+	<script>
+		var app2 = new Vue({
+			el:'#app2',
+			data:{
+				checked:['html','css']
+			}
+		})
+	</script>
+</body>
+</html>

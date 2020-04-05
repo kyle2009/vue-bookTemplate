@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<link rel="stylesheet" href="">
+	<script src="script/vue.js"></script>
+
+</head>
+<body>
+	<!-- 作用域插槽 -->
+
+	<!-- 作用域插槽是一种特殊的slot，使用一个可以复用的模板替换已渲染元素。 -->
+
+	<div id="app">
+		<child-component>
+			<template scope='props'>
+				<p>来自父组件的内容</p>
+				<p>{{ props.msg }}</p>
+			</template>
+		</child-component>
+	</div>
+
+	<script>
+		Vue.component('child-component',{
+			template:'<div class="container"><slot msg="来自子组件的内容"></slot></div>'
+		})
+
+		var app = new Vue({
+			el:'#app'
+		})
+	</script>
+
+	<!-- !!!注意：vue.js:640 [Vue tip]: the "scope" attribute for scoped slots have been deprecated and replaced by "slot-scope" since 2.5. The new "slot-scope" attribute can also be used on plain elements in addition to <template> to denote scoped slots. -->
+
+	<!-- vue2.5已弃用 scope -->
+</body>
+</html>

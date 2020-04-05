@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<link rel="stylesheet" href="">
+	<script src="script/vue.js"></script>
+
+</head>
+<body>
+	<!-- 与Vue1.x不同的是，Vue2.x将v-el和v-ref合并为了ref，Vue会自动去判断是普通标签还是组件。 -->
+
+	<div id="app">
+		<p ref='p'>内容</p>
+		<child-component ref='child'></child-component>
+	</div>
+
+	<script>
+		Vue.component('child-component',{
+			template:'<div>子组件</div>',
+			data:function () {
+				return {
+					message:'子组件'
+				}
+			}
+
+
+		})
+
+		var app = new Vue({
+				el:'#app'
+			})
+	</script>
+
+	<!-- 可以控制台打印 app.$refs 查看结果 -->
+</body>
+</html>

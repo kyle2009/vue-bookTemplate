@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>使用slot分发内容</title>
+	<link rel="stylesheet" href="">
+	<script src="script/vue.js"></script>
+
+</head>
+<body>
+	<!-- 当需要让组件组合使用，混合父组件的内容与子组件的模板时，就会用到slot，这个过程叫做内容分发。已<app>为例，它有两个特点： -->
+	<!-- <app>组件不知道它的挂载点会有什么内容。挂载点的内容是有<app>的父组件决定的。 -->
+	<!-- <app>组件很可能有它自己的模板 -->
+
+	<!-- props传递数据、events触发事件和slot内容分发就构成了Vue组件的3个API来源，再复杂的组件也是由这3部分构成的。 -->
+
+	<!-- 
+		作用域：
+		编译的作用域。父组件模板的内容是在父组件作用域内编译，子组件模板的内容是在子组件作用域内编译。
+	 -->
+
+	 <!-- slot用法：单个Slot -->
+
+	 <div id="app">
+	 	<child-component>
+	 		<p>分发的内容</p>
+	 		<p>更多分发的内容</p>
+	 	</child-component>	
+	 </div>
+
+	 <script>
+	 	Vue.component('child-component',{
+	 		template:'<div><slot><p>如果父组件没有插入内容，我将作为默认出现</p></slot></div>'
+	 	})
+
+	 	var app = new Vue({
+	 		el:'#app'
+	 	})
+	 </script>
+
+	 <!-- 注意：子组件<slot>内的备用内容，它的作用域是子组件本身 -->
+</body>
+</html>

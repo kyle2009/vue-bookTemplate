@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<link rel="stylesheet" href="">
+	<script src="script/vue.js"></script>
+
+</head>
+<body>
+	当需要应用多个class时，可以使用数组语法，给:class绑定一个数组，应用一个class列表：
+
+	<div id="app">
+		<div :class="[activeCls,errorCls]"></div>	
+	</div>
+
+	<script>
+		var app = new Vue({
+			el:'#app',
+			data:{
+				activeCls:'active',
+				errorCls:'error'
+			}
+		})
+	</script>
+</body>
+</html>

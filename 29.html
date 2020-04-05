@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<link rel="stylesheet" href="">
+	<script src="script/vue.js"></script>
+
+</head>
+<body>
+	<!-- 键入内容后，点击切换按钮，虽然DOM变了，但是之前在输入框键入的内容并没有改变，只是替换了placeholder的内容，说明<input>元素被复用了。 -->
+	<div id="app">
+		<template v-if = " type === 'name' ">
+			<label>用户名：</label>
+			<input type="" name="" placeholder="输入用户名">
+		</template>
+
+		<template v-else>
+			<label>邮箱：</label>
+			<input type="" placeholder="输入邮箱" name="">
+		</template>
+		<button type="" @click='handleToggleClick'>切换输入类型</button>
+	</div>
+
+	<script>
+		var app = new Vue({
+			el:'#app',
+			data:{
+				type:'name'
+			},
+			methods:{
+				handleToggleClick:function () {
+					this.type = this.type === 'name' ? 'mail' : 'name';
+				}
+			}
+		})
+	</script>
+
+	<!-- 如果你不希望这样做，可以使用Vue.js提供的key属性，它可以让你自己决定是否要复用元素，key的值必须是唯一的，例如： -->
+	<div id="app2">
+		<template v-if=" type === 'name' ">
+			<label>用户名：</label>
+			<input type="" name="" placeholder="输入用户名" key='name-input'>
+		</template>
+		<template v-else>
+			<label>邮箱：</label>
+			<input type="" name="" placeholder="输入邮箱" key='mail-input'>
+		</template>
+		<button type="" @click='handleToggleClik'>切换输入类型</button>
+	</div>
+
+	<script>
+		var app = new Vue({
+			el:'#app2',
+			data:{
+				type:'name'
+			},
+			methods:{
+				handleToggleClik:function () {
+					this.type = this.type === 'name' ? 'mail' : 'name';
+				}
+			}
+		})
+	</script>
+</body>
+</html>

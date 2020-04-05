@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>使用props传递数据</title>
+	<link rel="stylesheet" href="">
+	<script src="script/vue.js"></script>
+
+</head>
+<body>
+	<!-- 组件不仅仅是要把模板的内容进行复用，更重要的是组件间要进行通信。通常父组件的模板中包含子组件，父组件要正向地向子组件传递数据或参数，子组件接收到后根据参数的不同来渲染不同的内容或执行操作。这个正向传递数据的过程就是通过props来实现的。 -->
+
+	<!-- 在组件中，使用选项props来声明需要从父级接收的数据，props的值可以是两种，一种是字符串数组，一种是对象，本实例介绍数组的用法 -->
+
+	<div id="app">
+		<my-componnet message='来自父组件的数据'></my-componnet>
+	</div>
+
+	<script>
+		Vue.component('my-componnet',{
+			props:['message'],
+			template:'<div>{{ message }}</div>'
+		});
+
+		var app = new Vue({
+			el:"#app"			
+		})
+	</script>
+
+	<hr>
+
+	<!-- 由于HTML特性不区分大小写，当使用DOM模板是，驼峰命名的props名称要转为短横分割命名。例如 -->
+
+	<div id="app2">
+		<my-component2 warning-text='提示信息'></my-component2>
+	</div>
+
+	<script>
+		Vue.component('my-component2',{
+			props:['warningText'],
+			template:'<div>{{ warningText }}</div>'
+		})
+
+		var app = new Vue({
+			el:'#app2'
+		})
+	</script>
+
+	<!-- !!!如果使用的是字符串模板，仍然可以忽略这些限制 -->
+
+	<hr>
+
+	<!-- 有时候，传递的数据并不是直接写死的，而是来自父级的动态数据，这时可以使用指令v-bind来动态绑定props的值，当父组件的数据变化是，也会传递给子组件。示例代码如下： -->
+
+	<div id="app3">
+		<input type="text" v-model='parentMessage'>
+		<my-component3 :message='parentMessage'></my-component3>
+	</div>
+
+	<script type="text/javascript">
+		Vue.component('my-component3',{
+			props:['message'],
+			template:'<div>{{ message }}</div>'
+		})
+
+		var app3 = new Vue({
+			el:'#app3',
+			data:{
+				parentMessage:''
+			}
+		})
+	</script>
+</body>
+</html>

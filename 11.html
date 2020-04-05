@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<link rel="stylesheet" href="">
+	<script src="script/vue.js"></script>
+
+</head>
+<body>
+	<div id="app">
+		{{ fullName }}
+	</div>
+
+	<script>
+		var app = new Vue({
+			el:'#app',
+			data:{
+				firstName:'Jack',
+				lastName:'Green'
+			},
+			computed:{
+				fullName:{
+					// getter，用于读取 
+					get:function () {
+						return this.firstName +' '  +  this.lastName;
+					},
+
+					// setter，写入时触发 
+					set:function (newValue) {
+						var names = newValue.split(' ');
+						this.firstName = names[0];
+						this.lastName = names[names.length - 1];
+					}
+				}
+			}
+		})
+
+		// 运行 app.fullName 改变值之后，会修改。
+		// app.fullName = 'kyle li'
+	</script>
+</body>
+</html>

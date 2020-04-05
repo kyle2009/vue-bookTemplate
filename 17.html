@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<link rel="stylesheet" href="">
+	<script src="script/vue.js"></script>
+	<style type="text/css" media="screen">
+		.static {
+			width: 100px;
+			height: 100px;
+		}
+		.active{
+			background: blue;
+			color: #fff;
+		}
+
+		.error{
+			color: red;
+		}
+	</style>
+</head>
+<body>
+	<div id="app">
+		<div class="static" :class = '{ active: isActive, error: isError}'>This is a book!</div>
+	</div>
+
+	<script>
+		var app = new Vue({
+			el:'#app',
+			data:{
+				isActive:true,
+				isError:false
+			}
+		})
+	</script>
+</body>
+</html>

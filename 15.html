@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<link rel="stylesheet" href="">
+	<script src="script/vue.js"></script>
+
+</head>
+<body>
+	<div id="app">
+		<a v-bind:href="url">链接</a>
+		<img v-bind:src="imgUrl" alt="">
+		<!-- 缩写为 -->
+		<a :href="url">链接</a>
+		<img :src="imgUrl" alt="">
+	</div>
+
+	<script>
+		var app = new Vue({
+			el:'#app',
+			data:{
+				url:'https://www.github.com',
+				imgUrl:'https://cn.vuejs.org/images/logo.png'
+			}
+		})
+	</script>
+</body>
+</html>

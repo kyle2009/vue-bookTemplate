@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<link rel="stylesheet" href="">
+	<script src="script/vue.js"></script>
+
+</head>
+<body>
+	<!-- 也可以使用三元表达式来根据条件切换class -->
+	<div id="app">
+		<div :class="[isActive ? activeCls :'', errorCls]"></div>
+	</div>
+
+	<script>
+		var app = new Vue({
+			el:'#app',
+			data:{
+				isActive:false,
+				activeCls:'active',
+				errorCls:'error'
+			}
+		})
+	</script>
+</body>
+</html>

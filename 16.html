@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<link rel="stylesheet" href="">
+	<script src="script/vue.js"></script>
+	<style type="text/css" media="screen">
+		.active {
+			width: 100px;
+			height: 50px;
+			color: #fff;
+			background: blue;
+		}
+	</style>
+</head>
+<body>
+	<div id="app">
+		<div :class = "{ 'active': isActive }">
+			active
+		</div>
+	</div>
+
+	<script>
+		var app = new Vue({
+			el:'#app',
+			data:{
+				isActive: true
+			}
+		})
+	</script>
+</body>
+</html>

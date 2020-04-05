@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<link rel="stylesheet" href="">
+	<script src="script/vue.js"></script>
+
+</head>
+<body>
+	<div id="app">
+		<ul>
+			<template v-for='book in books'>
+				<li>书名：{{ book.name }}</li>
+				<li>作者：{{ book.author }}</li>
+			</template>
+		</ul>
+	</div>
+
+	<script>
+		var app = new Vue({
+			el:'#app',
+			data:{
+				books:[
+					{name:'《Vue.js实战》', author:'梁灏'},
+					{name:'《JavaScript语言精粹》', author:'Douglas Crockford'},
+					{name:'《JavaScript高级程序设计》', author:'Nicholas C.Zakas'}
+				]
+			}
+		});
+
+		// app.books = app.books.filter(function (item) {
+		// 	return item.name.match(/JavaScript/);
+		// });
+
+		// 要注意的是，以下变动的数组中，Vue是不能检测到的，也不会触发视图更新：
+		// 1、通过索引直接设置项，比如：app.books[3] = {...}
+		// 2、修改数组长度，比如app.books.length = 1.
+
+		// 解决第一个问题可以用两种方法实现同样的效果。第一种是使用Vue内置的set方法：
+		// Vue.set(app.books,3,{
+		// 	name:'《css揭秘》',
+		// 	author:'[希]Lea Verou'
+		// });
+
+		// 如果是在webpa中使用组件化的方式，默认是没有导入Vue的，这时可以使用$set,例如：
+		// this.$set(app.books,3,{
+		// 	name:'《css揭秘》',
+		// 	author:'[希]Lea Verou'
+		// })
+
+		// 另一种方法：
+		// app.books.splice(3, 1, {
+	    //  name:'《css揭秘》',
+		// 	author:'[希]Lea Verou'
+		// })
+
+		// 第二个问题也可以直接用splice来解决：
+		// app.books.splice(1);
+	</script>
+</body>
+</html>
